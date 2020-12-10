@@ -10,7 +10,7 @@ const fetchStudents = () => {
   .then((response) => response.json())
 }
 
-export default {
+export {
   fetchStudentByID,
   fetchStudents
 }

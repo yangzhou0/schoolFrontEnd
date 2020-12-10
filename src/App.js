@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { BrowserRouter, Route } from 'react-router-dom'
 import './App.css'
 import HomePage from './pages/HomePage.js'
+import StudentsPage from './pages/StudentsPage.js'
 import StudentPage from './pages/StudentPage.js'
 
 class App extends Component {
@@ -11,6 +12,7 @@ class App extends Component {
         <BrowserRouter>
           <div>
             <Route exact path="/" component={HomePage} />
+            <Route exact path="/students/" component={StudentsPage} />
             <Route exact path="/students/:student_id" component={StudentPage} />
           </div>
         </BrowserRouter>
