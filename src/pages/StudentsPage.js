@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table'
 import {fetchStudentByID,fetchStudents} from '../APIs/StudentsAPI.js'
+import StudentList from '../components/StudentList'
 class StudentsPage extends Component {
   state = {
     students: []
@@ -9,8 +9,9 @@ class StudentsPage extends Component {
   async componentDidMount() {
     try {
       const students = await fetchStudents();
-      console.log('students', students)
-      this.setState({ students: students });
+      console.log('students', students.students)
+      this.setState({ students: students.students });
+      console.log('students', this.state.students)
     } catch (e) {
       console.error('error fetching students: ', e);
     }
@@ -20,12 +21,7 @@ class StudentsPage extends Component {
     return (
       <div>
         <h1> Students Page </h1>
-        <BootstrapTable data={this.state.students}>
-          <TableHeaderColumn isKey dataField='id'> ID </TableHeaderColumn>
-          <TableHeaderColumn dataField='first_name'> First Name </TableHeaderColumn>
-          <TableHeaderColumn dataField='last_name'> Last Name </TableHeaderColumn>
-          <TableHeaderColumn dataField='age'> Age </TableHeaderColumn>
-        </BootstrapTable>
+        <StudentList students = {this.state.students} />
       </div>
     )
   }
